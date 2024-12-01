@@ -22,3 +22,9 @@ class C {
 // Использование транзитивного обращения
 const a = new A();
 a.getB().getC().doSomething();
+
+// Использование композиции
+const composite = (classA: A) => classA.getB().getC();
+const compositeInstance = composite(new A());
+compositeInstance.doSomething();
+

@@ -1,3 +1,9 @@
+
+
+/**
+ *  Необходимо выделить проверки в отдельные функции.
+ *  isToken ? tokenPayment() : cardPayment();
+*/
 const createPayment = (isToken: Boolean) => {
   if (isToken) {
     const token = getUrl().slice();

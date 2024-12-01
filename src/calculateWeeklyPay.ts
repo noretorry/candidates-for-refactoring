@@ -1,3 +1,11 @@
+
+/**
+ * Можно вынести получение tenthRate и tenthsWorked в отдельную функцию getPayInfo
+ * const { tenthRate, tenthsWorked } = getPayInfo()
+ * 
+ * Можно и получение overtimeRate вынести в отдельную функцию getOvertimeRate
+ * const overTimePay = Math.round(overTime * getOvertimeRate(overtime, tenthRate));
+*/ 
 function calculateWeeklyPay(overtime: boolean): number {
   const tenthRate: number = getTenthRate();
   const tenthsWorked: number = getTenthsWorked();
@@ -8,3 +16,4 @@ function calculateWeeklyPay(overtime: boolean): number {
   const overtimePay: number = Math.round(overTime * overtimeRate);
   return straightPay + overtimePay;
 }
+

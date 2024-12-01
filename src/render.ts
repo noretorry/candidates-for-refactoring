@@ -1,14 +1,8 @@
+
+/*
+ *  Используем шаблонные литералы ._.
+*/ 
 const render = (size: number) => {
-  const html = new StringBuffer('<hr');
-
-  if (size > 0) {
-    html
-      .append(' size="')
-      .append(size + 1)
-      .append('"');
-  }
-
-  html.append('>');
-
-  return html.toString();
+  const sizeAttribute = size > 0 ? ` size="${size + 1}"` : '';
+  return `<hr${sizeAttribute}/>`; // <hr> не поддерживает children, используем самозакрывающийся тег
 };
