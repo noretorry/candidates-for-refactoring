@@ -3,19 +3,24 @@ enum ShapeType {
   Square,
 }
 
-function calculateArea(shape: ShapeType, radiusOrSide: number): number {
-  let area = 0;
-
+//
+//  Мы не хотим, чтобы наш код имел избыточность, 
+//  поэтому мы выносим общие действия в отдельную функцию
+//  + добавим дефолтное поведение
+// 
+function getAreaByShape(shape: ShapeType, radiusOrSide: number): number {
   switch (shape) {
     case ShapeType.Circle:
-      area = Math.PI * Math.pow(radiusOrSide, 2);
-      break;
+      return Math.PI * Math.pow(radiusOrSide, 2);
     case ShapeType.Square:
-      area = Math.pow(radiusOrSide, 2);
-      break;
+      return Math.pow(radiusOrSide, 2);
+    default:
+      throw new Error(`Unknown shape: ${shape}`);
   }
-
-  return area;
 }
 
-console.log(calculateArea(ShapeType.Circle, 5)); // Output: 78.54
+function trueCalculateArea(shape: ShapeType, radiusOrSide: number): number {
+  return getAreaByShape(shape, radiusOrSide);
+}
+
+console.log('trueCalculateArea', trueCalculateArea(ShapeType.Circle, 5).toFixed(2)); // Output: 78.54

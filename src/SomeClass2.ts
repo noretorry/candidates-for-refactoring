@@ -1,3 +1,4 @@
+// Оставить один метод внутри, всё остальное не надо?
 class SomeClass2 {
   private unusedVariable: number;
 

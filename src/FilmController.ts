@@ -1,10 +1,26 @@
-class FilmController {
+/**
+ *  разделим ответственность и
+ *  избавимся от дублирования логики открытия попапа, используя отдельный класс.
+ */
+
+interface IFilmController {
+  openDetails(): void
+  isPopupOpened(): boolean
+}
+
+class FilmController implements IFilmController {
+  private popupService: PopupService
+
+  constructor(popupService: PopupService) {
+    this.popupService = popupService
+  }
+
   openDetails() {
-    const popup = new Popup();
-    this.popupOpened = true;
+    this.popupService.openPopup()
   }
 
   isPopupOpened() {
-    return this.popupOpened;
+    return this.popupService.isPopupOpened()
   }
 }
+

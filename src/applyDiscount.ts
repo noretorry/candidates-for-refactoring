@@ -5,6 +5,8 @@ function calculateTotalPrice(items) {
   items.forEach((item) => {
     totalPrice += item.price;
   });
+  // Использовать reduce, что улучшит производительность и читабельность кода
+  // return items.reduce((acc, cur) => acc + cur.price, 0);
   return totalPrice;
 }
 

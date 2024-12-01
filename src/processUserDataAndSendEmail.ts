@@ -1,3 +1,7 @@
+
+/**
+ *  Добавить guard clauses, async/await, error handling
+*/
 function processUserDataAndSendEmail(user: User) {
   // Обработка данных пользователя
   user.processData();
@@ -5,3 +9,4 @@ function processUserDataAndSendEmail(user: User) {
   // Отправка электронной почты
   emailService.sendEmail(user.email, 'Данные обработаны успешно');
 }
+

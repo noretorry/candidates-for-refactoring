@@ -1,4 +1,6 @@
-const updateUserHandle = (handle) => {
+
+// Убираем дубли, делаем одну функцию
+const updateUserProperty = (property, value) => {
   if (!isLoggedIn()) {
     toLoginPage();
 
@@ -8,30 +10,15 @@ const updateUserHandle = (handle) => {
   const token = getToken();
   const headers = getHeaders(token);
 
-  return fetch(`${domain}/v1/users/handle`, {
+  return fetch(`${domain}/v1/users/${property}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify({
-      handle,
+      [property]: value,
     }),
   });
 };
 
-const updateUserInterests = (interestUUIDs) => {
-  if (!isLoggedIn()) {
-    toLoginPage();
+const updateUserHandle = (handle) => updateUserProperty('handle', handle);
+const updateUserInterests = (interestUUIDs) => updateUserProperty('interests', interestUUIDs);
 
-    return;
-  }
-
-  const token = getToken();
-  const headers = getHeaders(token);
-
-  return fetch(`${domain}/v1/users/interests`, {
-    method: 'PUT',
-    headers,
-    body: JSON.stringify({
-      interestUUIDs,
-    }),
-  });
-};
